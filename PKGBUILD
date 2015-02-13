@@ -10,21 +10,21 @@ depends=('libfs')
 url="http://xorg.freedesktop.org/archive/individual/app"
 provides=('xorg-xfs-fslsfonts')
 optdepends=('xorg-xfs' 'xorg-xfstt')
-source=("http://xorg.freedesktop.org/archive/individual/app/fslsfonts-1.0.5.tar.gz")
+source=("http://xorg.freedesktop.org/archive/individual/app/fslsfonts-$pkgver.tar.gz")
 sha256sums=('27e58d2313835ce0f08cf47c59a43798b122f605a55f54b170db27b57a492007')
 options=(!strip)
 
 build() {
-  cd ${srcdir}/fslsfonts-1.0.5
+  cd ${srcdir}/fslsfonts-${pkgver}
   msg "Configuring fslsfonts..."
   ./configure --prefix=/usr
-  msg "Compiling XFS... "
+  msg "Compiling fslsfonts... "
   make
 }
 
 package() {
   msg "Installing fslsfonts"
-  cd ${srcdir}/fslsfonts-1.0.5
+  cd ${srcdir}/fslsfonts-${pkgver}
   make DESTDIR=${pkgdir} install
 }
 
